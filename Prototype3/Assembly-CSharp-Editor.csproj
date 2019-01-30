@@ -330,6 +330,15 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Rewired_Editor">
+ <HintPath>C:/Users/kiher/Desktop/prototype3/Prototype3/Assets/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Rewired_Core">
+ <HintPath>C:/Users/kiher/Desktop/prototype3/Prototype3/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ </Reference>
+ <Reference Include="Rewired_Windows">
+ <HintPath>C:/Users/kiher/Desktop/prototype3/Prototype3/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Users/kiher/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -344,15 +353,6 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/kiher/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Core">
- <HintPath>C:/Users/kiher/Desktop/prototype3/Prototype3/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Windows">
- <HintPath>C:/Users/kiher/Desktop/prototype3/Prototype3/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Editor">
- <HintPath>C:/Users/kiher/Desktop/prototype3/Prototype3/Assets/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

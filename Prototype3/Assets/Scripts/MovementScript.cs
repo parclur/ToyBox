@@ -10,8 +10,6 @@ public class MovementScript : MonoBehaviour
     [SerializeField] LayerMask groundLayers;
 
     private Player player;
-    private float fallMultiplier = 2.5f;
-    private float lowJumpMultiplier = 2f;
     public int playerId = 0;
 
     bool isGrounded = false;
@@ -34,13 +32,13 @@ public class MovementScript : MonoBehaviour
 
     void Movement()
     {
-        
-        move.y = player.GetAxis("Move Vertical");
-        move.x = player.GetAxis("Move Horizontal");
 
-        if (isGrounded && player.GetButton("Forward"))
+        float Horizontal = Input.GetAxis("Horizontal");
+        float Vertical = Input.GetAxis("Vertical");
+
+        if (Input.GetKey(KeyCode.W) && isGrounded)
         {
-            move = new Vector3(move.x, 0.0f, move.y);
+            move = new Vector3(Horizontal, 0.0f, Vertical);
             rb.AddForce(move * speed);
             rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
             isGrounded = false;
