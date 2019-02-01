@@ -63,11 +63,11 @@ public class MovementScript : MonoBehaviour
 
         move.y = player.GetAxis("Move Vertical");
         //move.x = player.GetAxis("Move Horizontal");
+        move = new Vector3(0, 0, move.y);
 
-        if (isGrounded && player.GetButton("Forward"))
+        if (isGrounded && player.GetButton("ForwardVertical"))
         {
-            move = new Vector3(0, 0, move.y);
-            rb.AddForce(move * speed);
+            rb.AddRelativeForce(Vector3.forward * speed);
             rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
             isGrounded = false;
         }
