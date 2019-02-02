@@ -23,6 +23,8 @@ public class MovementScript : MonoBehaviour
     Vector3 move;
     Vector2 look;
 
+    public GameObject gameManager;
+    GameManager gameManagerScript;
     //PlayerHealth playerHealthScript;
 
     // Start is called before the first frame update
@@ -31,6 +33,7 @@ public class MovementScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = ReInput.players.GetPlayer(playerId);
 
+        gameManagerScript = gameManager.GetComponent<GameManager>();
         //playerHealthScript = GetComponent<PlayerHealth>();
     }
 
@@ -82,6 +85,9 @@ public class MovementScript : MonoBehaviour
         if (col.gameObject.tag == "Grounded")
         {
             isGrounded = true;
+
+            //need to give player points for jumping on enemy
+            //gameManagerScript.AddPoints(1);
         }
 
         //else if (col.gameObject.tag == "Enemy") // enemy already has tag Grounded
