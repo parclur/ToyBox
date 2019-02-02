@@ -11,14 +11,12 @@ public class ToyScript : MonoBehaviour
     float minDistance = 5;
     float maxDistance = 10;
 
-<<<<<<< HEAD
     public int enemyHealth = 5;
     ParticleSystem meltingParticleSystem;
     public GameObject gameManager;
     GameManager gameManagerScript;
-=======
+
     NavMeshAgent agent;
->>>>>>> e4e53b07674b85785b717d22cc82f708f1d09ad4
 
     // Start is called before the first frame update
     void Start()
