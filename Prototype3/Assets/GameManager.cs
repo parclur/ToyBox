@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     float oneHealthAlpha = 0.59f;
     float noHealthAlpha = 1f;
 
+    [Header("Spawning")]
+    public GameObject[] spawnArray;
+    public GameObject enemyToSpawn;
+    int spawnCounter = 0;
+
     [Header("Game Over")] // TEMPORARY FOR THE PROTOTYPE
     public GameObject gameOverText;
 
@@ -41,6 +46,20 @@ public class GameManager : MonoBehaviour
         tempColor = darkness.color;
 
         gameOverText.SetActive(false);
+
+        StartCoroutine(SpawnEnemies());
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        Instantiate(enemyToSpawn, spawnArray[spawnCounter].transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(3);
+        spawnCounter++;
+        if (spawnCounter >= spawnArray.Length)
+            spawnCounter = 0;
+
+        if (timer > 3)
+            StartCoroutine(SpawnEnemies());
     }
 
     // Update is called once per frame
