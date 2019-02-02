@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ToyScript : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class ToyScript : MonoBehaviour
     private GameObject player;
     float minDistance = 5;
     float maxDistance = 10;
+
+    NavMeshAgent agent;
+
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player1");
     }
 
@@ -25,10 +30,14 @@ public class ToyScript : MonoBehaviour
     {
         //super simple movement would fix later
         transform.LookAt(player.transform);
-        if(Vector3.Distance(transform.position, player.transform.position) >= minDistance)
-        {
-            transform.position += transform.forward * speed * Time.deltaTime;
-        }
+        //Quaternion.Euler(0, transform.localEulerAngles.y, 0);
+
+        //if(Vector3.Distance(transform.position, player.transform.position) >= minDistance)
+        //{
+        //    transform.position += transform.forward * speed * Time.deltaTime;
+        //}
+
+        agent.destination = player.transform.position;
         
     }
 
