@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //if(collision.gameObject.layer == 9) // enemy already has tag Grounded
-        if(collision.gameObject.tag == "Enemy") // enemy already has tag Grounded
+        if(collision.collider.GetType() == typeof(BoxCollider) && collision.gameObject.tag == "Enemy") // enemy already has tag Grounded
         {
             Damage(1);
         }

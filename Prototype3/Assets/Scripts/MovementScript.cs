@@ -17,6 +17,8 @@ public class MovementScript : MonoBehaviour
     public float rootHigh;
     public float cameraPitchSpeed = 1;
     public float cameraRotateSpeed = 1;
+    private float push = 5;
+
 
     bool isGrounded = false;
     Rigidbody rb;
@@ -33,7 +35,7 @@ public class MovementScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = ReInput.players.GetPlayer(playerId);
 
-        gameManagerScript = gameManager.GetComponent<GameManager>();
+        //gameManagerScript = gameManager.GetComponent<GameManager>();
         //playerHealthScript = GetComponent<PlayerHealth>();
     }
 
@@ -82,6 +84,16 @@ public class MovementScript : MonoBehaviour
     }
     void OnCollisionStay(Collision col)
     {
+        if (col.collider.GetType() == typeof(BoxCollider) && col.gameObject.tag == "Enemy")
+        {
+            // do stuff only for the box collider
+            Destroy(col.gameObject);
+        }
+        else if (col.collider.GetType() == typeof(SphereCollider) && col.gameObject.tag == "Enemy")
+        {
+            // do stuff only for the circle collider
+            rb.AddForce(Vector3.up * push, ForceMode.Impulse);
+        }
         if (col.gameObject.tag == "Grounded")
         {
             isGrounded = true;
@@ -89,10 +101,6 @@ public class MovementScript : MonoBehaviour
             //need to give player points for jumping on enemy
             //gameManagerScript.AddPoints(1);
         }
-
-        //else if (col.gameObject.tag == "Enemy") // enemy already has tag Grounded
-        //{
-        //    playerHealthScript.Damage(1);
-        //}
+        
     }
 }

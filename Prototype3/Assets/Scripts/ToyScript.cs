@@ -5,7 +5,7 @@ using UnityEngine;
 public class ToyScript : MonoBehaviour
 {
     private float push = 5;
-    private float speed = 4;
+    [SerializeField] float speed = 2;
     private GameObject player;
     float minDistance = 5;
     float maxDistance = 10;
@@ -18,7 +18,7 @@ public class ToyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+       Movement();
     }
 
     void Movement()
@@ -43,14 +43,5 @@ public class ToyScript : MonoBehaviour
         //Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
         //transform.position += moveVector;
         //rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Player1")
-        {
-            col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * push, ForceMode.Impulse);
-            Destroy(this.gameObject);
-        }
     }
 }
