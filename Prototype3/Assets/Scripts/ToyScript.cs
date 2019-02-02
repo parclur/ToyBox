@@ -9,10 +9,19 @@ public class ToyScript : MonoBehaviour
     private GameObject player;
     float minDistance = 5;
     float maxDistance = 10;
+
+    public int enemyHealth = 5;
+    ParticleSystem meltingParticleSystem;
+    public GameObject gameManager;
+    GameManager gameManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player1");
+
+        meltingParticleSystem = GetComponent<ParticleSystem>();
+        gameManagerScript = gameManager.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -43,5 +52,22 @@ public class ToyScript : MonoBehaviour
         //Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
         //transform.position += moveVector;
         //rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+    }
+
+    public void EnemyHealth()
+    {
+        enemyHealth--;
+
+        if(enemyHealth > 0)
+        {
+            meltingParticleSystem.Play();
+        }
+
+        if (enemyHealth <= 0)
+        {
+            Debug.Log("MELTING");
+            gameManagerScript.AddPoints(1);
+            Destroy(gameObject);
+        }
     }
 }

@@ -87,7 +87,7 @@ public class MovementScript : MonoBehaviour
         if (col.collider.GetType() == typeof(BoxCollider) && col.gameObject.tag == "Enemy")
         {
             // do stuff only for the box collider
-            Destroy(col.gameObject);
+            //Destroy(col.gameObject);
         }
         else if (col.collider.GetType() == typeof(SphereCollider) && col.gameObject.tag == "Enemy")
         {
