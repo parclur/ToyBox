@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ToyScript : MonoBehaviour
 {
@@ -10,14 +11,19 @@ public class ToyScript : MonoBehaviour
     float minDistance = 5;
     float maxDistance = 10;
 
+<<<<<<< HEAD
     public int enemyHealth = 5;
     ParticleSystem meltingParticleSystem;
     public GameObject gameManager;
     GameManager gameManagerScript;
+=======
+    NavMeshAgent agent;
+>>>>>>> e4e53b07674b85785b717d22cc82f708f1d09ad4
 
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player1");
 
         meltingParticleSystem = GetComponent<ParticleSystem>();
@@ -34,10 +40,14 @@ public class ToyScript : MonoBehaviour
     {
         //super simple movement would fix later
         transform.LookAt(player.transform);
-        if(Vector3.Distance(transform.position, player.transform.position) >= minDistance)
-        {
-            transform.position += transform.forward * speed * Time.deltaTime;
-        }
+        //Quaternion.Euler(0, transform.localEulerAngles.y, 0);
+
+        //if(Vector3.Distance(transform.position, player.transform.position) >= minDistance)
+        //{
+        //    transform.position += transform.forward * speed * Time.deltaTime;
+        //}
+
+        agent.destination = player.transform.position;
         
     }
 
