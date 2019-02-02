@@ -23,11 +23,15 @@ public class MovementScript : MonoBehaviour
     Vector3 move;
     Vector2 look;
 
+    //PlayerHealth playerHealthScript;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         player = ReInput.players.GetPlayer(playerId);
+
+        //playerHealthScript = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -79,5 +83,10 @@ public class MovementScript : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        //else if (col.gameObject.tag == "Enemy") // enemy already has tag Grounded
+        //{
+        //    playerHealthScript.Damage(1);
+        //}
     }
 }

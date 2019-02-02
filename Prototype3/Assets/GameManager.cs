@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 // This script is located under the GameManager object and is used to...
 public class GameManager : MonoBehaviour
@@ -26,6 +27,9 @@ public class GameManager : MonoBehaviour
     float oneHealthAlpha = 0.59f;
     float noHealthAlpha = 1f;
 
+    [Header("Game Over")] // TEMPORARY FOR THE PROTOTYPE
+    public GameObject gameOverText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,8 @@ public class GameManager : MonoBehaviour
         score = 0;
 
         tempColor = darkness.color;
+
+        gameOverText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,14 +52,17 @@ public class GameManager : MonoBehaviour
 
         if (timer <= 0)
         {
-            // Game Over
+            // TEMPORARY FOR THE PROTOTYPE
+            gameOverText.SetActive(false);
+            StartCoroutine("ResetGame");
         }
+    }
 
-        // tests to see if the score is being added
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            HealthUI(1);
-        }
+    // TEMPORARY FOR THE PROTOTYPE
+    IEnumerator ResetGame()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // resets the scene after 1 second
     }
 
     // called each time the player earns points
@@ -63,6 +72,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    // called each time the player's health is modified (taking damage or picking up light bulbs); only functions when the player's health is 0 to 3
     public void HealthUI(int playerHealth)
     {
         switch (playerHealth)
