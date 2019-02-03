@@ -122,7 +122,9 @@ public class GameManager : MonoBehaviour
                 lightbulb2.SetActive(false);
                 lightbulb3.SetActive(false);
                 tempColor.a = noHealthAlpha;
-                darkness.color = tempColor; 
+                darkness.color = tempColor;
+                gameOverText.SetActive(true);
+                StartCoroutine("ResetGame");
                 break;
         }
     }

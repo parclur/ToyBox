@@ -35,6 +35,7 @@ public class HeatLampAttack : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
                     hit.transform.gameObject.transform.GetComponent<ToyScript>().EnemyHealth();
+                    hit.transform.gameObject.transform.GetComponent<ToyScript>().MeltEnemy();
                 }
             }
         }

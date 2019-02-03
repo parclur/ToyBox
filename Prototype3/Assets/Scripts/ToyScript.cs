@@ -11,7 +11,7 @@ public class ToyScript : MonoBehaviour
     float minDistance = 5;
     float maxDistance = 10;
 
-    public int enemyHealth = 5;
+    public int enemyHealth = 3;
     ParticleSystem meltingParticleSystem;
     public GameObject gameManager;
     GameManager gameManagerScript;
@@ -25,6 +25,7 @@ public class ToyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player1");
 
         meltingParticleSystem = GetComponent<ParticleSystem>();
+        gameManager = GameObject.Find("GameManager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
     }
 
@@ -65,10 +66,11 @@ public class ToyScript : MonoBehaviour
     public void EnemyHealth()
     {
         enemyHealth--;
+        Debug.Log("ENEMY HIT");
 
         if(enemyHealth > 0)
         {
-            meltingParticleSystem.Play();
+         
         }
 
         if (enemyHealth <= 0)
@@ -77,5 +79,10 @@ public class ToyScript : MonoBehaviour
             gameManagerScript.AddPoints(1);
             Destroy(gameObject);
         }
+    }
+
+    public void MeltEnemy()
+    {
+        meltingParticleSystem.Play();
     }
 }
