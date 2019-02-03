@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class ToyScript : MonoBehaviour
 {
     private float push = 5;
-    [SerializeField] float speed = 2;
+    [SerializeField] float speed = 1;
     private GameObject player;
     float minDistance = 5;
     float maxDistance = 10;

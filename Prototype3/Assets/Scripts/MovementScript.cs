@@ -92,6 +92,7 @@ public class MovementScript : MonoBehaviour
         else if (col.collider.GetType() == typeof(SphereCollider) && col.gameObject.tag == "Enemy")
         {
             // do stuff only for the circle collider
+            rb.AddForce(Vector3.forward * 2);
             rb.AddForce(Vector3.up * push, ForceMode.Impulse);
         }
         if (col.gameObject.tag == "Grounded")
